@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>まるばつゲーム</h1>
+    <div id = "buttons-container" ><!--#ボタンコンテーナ-->
+        <button id = "2-players" >2人プレイヤー対戦</button>
+        <button id = "vsAI" >コンピュータ対戦</button>
+    </div>
+    <div id = "container" class = "hide"><!--まるばつの盤面-->
+        <div class="box" id="block-1"></div><!--上左から右下-->
+        <div class="box" id="block-2"></div>
+        <div class="box" id="block-3"></div>
+        <div class="box" id="block-4"></div>
+        <div class="box" id="block-5"></div>
+        <div class="box" id="block-6"></div>
+        <div class="box" id="block-7"></div>
+        <div class="box" id="block-8"></div>
+        <div class="box" id="block-9"></div>
+    </div>
+    <div class="hide"id = "scoreboard-container">
+        <h2>スコアボード</h2>
+        <span class = "score-box"><!--xの表示されるスコア-->
+            <span id="x-scoreboard">X</span>:<!--バツのポイントを分かるようにばつのイメージ-->
+            <span id="scorecounter-1">0</span><!--点数カウンター-->
+        </span>
+        <span class = "score-box"><!--oの表示されるスコア-->
+            <span id="o-scoreboard"></span>:<!--まるのポイントを分かるようにばつのイメージ-->
+            <span id="scorecounter-2">0</span><!--点数カウンター-->
+        </span>
+    </div>
+
+    <div class="hide"><!--画面に表示されるまるとばつ-->
+        <div class ="x">x</div>
+        <div class ="o"></div>
+    </div>
+    <div id = "message" class="hide"><!--誰かが勝った、引き分けのメッセージ-->
+        <p>qwerty</p>
+    </div>
+    <script src = "js/scripts.js"></script>
+</body>
+</html>

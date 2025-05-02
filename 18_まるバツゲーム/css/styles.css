@@ -1,0 +1,121 @@
+body{
+    text-align: center;  /*HTMLは画面のどの向きにします*/
+    font-family: Helvetica,sans-serif;  /*どんなフォントを使うを述べっています*/
+}
+
+h1{
+    font-size: 40px; /*マルバツゲームのタイトルの文字サイズ*/
+}
+
+/*ボタン*/
+
+#buttons-container button{
+    border: none;        /*ボタンの枠、この場合は枠なし*/
+    padding: 10px 15px;  /*ボタンサイズ*/
+    margin: 0 10px;        /*ボタンの間の距離*/
+}
+
+/*ゲームの盤面*/
+
+#container{
+    display: flex;/*ボックスの編成指導*/
+    width: 300px;/*一つのボックスの幅*/
+    margin: 0;/*枠を抜く*/
+    flex-direction: row;/*盤面のブロックはお互いに横に位置するように*/
+    flex-wrap: wrap;/*ブロックを3x3になるように*/
+    position: relative;/*盤面を画面の中間位置になります*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.box{
+    height:100px;  /*盤面の高さ*/
+    border: 5px solid #000;/*盤面の枠サイズと色*/
+    box-sizing: border-box;/*盤面の幅は高さと同じになる(枠が含めている)*/
+    flex: 1 1 33%;/*まるとばつの入る場所はサイズ的にお互いに同じです*/
+}
+
+#block-1,#block-2,#block-3{/*盤面の上の枠無し*/
+    border-top: none;
+}
+
+#block-1,#block-4,#block-7{/*盤面の左の枠なし*/
+    border-left: none;
+}
+
+#block-3,#block-6,#block-9{/*盤面の右側枠無し*/
+    border-right: none;
+}
+
+#block-7,#block-8,#block-9{/*盤面の下側無し*/
+    border-bottom: none;
+}
+
+/*丸とばつの形*/
+.x{
+    font-size: 100px;
+    color: navy;
+    display: inline-block;
+    line-height: 100px;
+}
+
+.o{
+    width: 50px;
+    height: 50px;
+    border: 5px solid green;
+    border-radius: 50%;/*まるの形になる比*/
+    display: inline-block;
+    margin-top: 17px;
+}
+
+.hide{
+    display: none!important;/*隠し関数*/
+}
+.show{
+    display: block;
+}
+
+
+/*スコアボード*/
+
+#scoreboard-container{
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+h2{
+    font-size: 25px;
+}
+
+#x-scoreboard{
+    color: navy;
+    margin-right: 3px;
+    display: inline-block;
+}
+.score-box{
+    margin: 20px;
+}
+
+#o-scoreboard{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid green;
+    border-radius: 50%;
+}
+
+#message p{
+    position:absolute;/*画面の全部の前で表すように*/
+    margin-left: auto;/*メセージの位置*/
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 150px;/*メセージボックスの高さ*/
+    width: 500px;/*メセージボックスの幅*/
+    font-size: 50px;
+    background-color:#000;/*メセージボックスの色*/
+    color: #fff;/*文字のカラー*/
+    padding: 20px;/*文字をわく距離を取る*/
+}

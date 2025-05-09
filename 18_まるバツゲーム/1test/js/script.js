@@ -1,2 +1,4 @@
-let j = Math.floor(Math.random()*9)+1;
-    console.log(j);
+const fs= require("fs");
+const input = fs.readFileSync("/dev/stdin","utf-8").trim();
+
+console.log(input)

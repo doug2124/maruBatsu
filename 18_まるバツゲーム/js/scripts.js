@@ -3,8 +3,7 @@ let o = document.querySelector(".o");
 let boxes =document.querySelectorAll(".box");
 let button = document.querySelectorAll("#buttons-container button");
 let textMessage = document.querySelector("#message p");
-let message = document.querySelector("#message");
-let secondPlayer;
+
 //誰のターンのカウンター
 let player1 = 0;
 let player2 = 0;
@@ -15,9 +14,11 @@ let player2 = 0;
 let button1=button[0].addEventListener("click",function(){
     hideButton();
     showBoard();
-    for(let i=0;i<boxes.length;i++){ 
-
-        boxes[i].addEventListener("click",function(){
+    for(let i =0;i<boxes.length;i++){
+        boxes[i].addEventListener("click",VSClick);
+    }
+});
+function VSClick(){
         let el= checkPlayer(player1,player2);
         console.log(el);
         if(this.childNodes.length==0){
@@ -38,9 +39,7 @@ let button1=button[0].addEventListener("click",function(){
                 player1=0;
                 player2=0;
             }
-        });
-}
-});
+        }
 //vsAI
 let button2=button[1].addEventListener("click",function(){
     hideButton();
@@ -57,12 +56,11 @@ let button2=button[1].addEventListener("click",function(){
             if(player1==4){
                 checkDraw();
             }
-            if(checkEmptySpace()==undefined){//引き分けの場合はAIがプレイしないように
+                if(checkEmptySpace()==undefined){//引き分けの場合はAIがプレイしないように
                 aiPlay();
-            }
+        }
             //プレイヤーカウンター
             player1++;
-            console.log(player1);
         }
         });
 }  
@@ -180,9 +178,15 @@ function xWin(){
     textMessage.innerHTML=text;
     message.classList.remove("hide");
     textMessage.classList.remove("hide");
-    setTimeout(function(){
+    for(let i =0 ; i<boxes.length;i++){
+       boxes[i].removeEventListener("click",VSClick); 
+    }
+    setTimeout(function(){ 
         clearBoard();
         message.classList.add("hide");
+        for(let i =0;i<boxes.length;i++){
+        boxes[i].addEventListener("click",VSClick); 
+        }
     },2000);
     let xScore =document.querySelector("#scorecounter-1");
     xScore.textContent= parseInt(xScore.textContent)+1;
@@ -195,9 +199,15 @@ function oWin(){
     textMessage.innerHTML=text;
     message.classList.remove("hide");
     textMessage.classList.remove("hide");
+    for(let i =0 ; i<boxes.length;i++){
+        boxes[i].removeEventListener("click",VSClick); 
+     }
     setTimeout(function(){
         clearBoard();
         message.classList.add("hide");
+        for(let i =0;i<boxes.length;i++){
+            boxes[i].addEventListener("click",VSClick); 
+            }
     },2000);
     let oScore =document.querySelector("#scorecounter-2");
     oScore.textContent= parseInt(oScore.textContent)+1;
@@ -207,6 +217,7 @@ function oWin(){
 //引き分け
 function checkDraw(){
     let counter=0;
+    console.log(counter);
     for(let i=0;i<boxes.length;i++){
         if(boxes[i].childNodes[0]!=undefined){
             counter++;
@@ -252,7 +263,7 @@ function showBoard(){//ボードを見せる
         scoreContainer.classList.add("show");
 },500);}
 
-function aiPlay(){
+function aiPlay(){//aiのプレイ関数
     let j = Math.floor(Math.random()*8)+1;
     if(boxes[j].childNodes.length==0){
         let ai=o;

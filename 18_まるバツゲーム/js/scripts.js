@@ -3,7 +3,7 @@ let o = document.querySelector(".o");
 let boxes =document.querySelectorAll(".box");
 let button = document.querySelectorAll("#buttons-container button");
 let textMessage = document.querySelector("#message p");
-
+let mainScreenBtn= document.querySelector("#mainScreen");
 //誰のターンのカウンター
 let player1 = 0;
 let player2 = 0;
@@ -14,13 +14,15 @@ let player2 = 0;
 let button1=button[0].addEventListener("click",function(){
     hideButton();
     showBoard();
+    showMainScreenBtn();
     for(let i =0;i<boxes.length;i++){
         boxes[i].addEventListener("click",VSClick);
     }
 });
 function VSClick(){
+        
         let el= checkPlayer(player1,player2);
-        console.log(el);
+        console.log(mainScreenBtn.style.display);
         if(this.childNodes.length==0){
             let cloneEl = el.cloneNode(true);
             this.appendChild(cloneEl);
@@ -44,6 +46,7 @@ function VSClick(){
 let button2=button[1].addEventListener("click",function(){
     hideButton();
     showBoard();
+    showMainScreenBtn();
     for(let i=0;i<boxes.length;i++){ 
 
         boxes[i].addEventListener("click",function(){
@@ -250,7 +253,8 @@ function clearBoard(){
 //ボタンを隠す
 function hideButton(){
     setTimeout(function(){
-        document.getElementById("buttons-container").style.display="none";
+        document.getElementById("2-players").style.display="none";
+        document.getElementById("vsAI").style.display="none";
     },400);
 }
 function showBoard(){//ボードを見せる
@@ -262,6 +266,16 @@ function showBoard(){//ボードを見せる
         scoreContainer.classList.remove("hide");
         scoreContainer.classList.add("show");
 },500);}
+function hideBoard(){
+    setTimeout(function(){
+        let container=document.querySelector("#container");
+        container.classList.remove("show");
+        container.classList.add("hide");
+        let scoreContainer=document.querySelector("#scoreboard-container");
+        scoreContainer.classList.remove("show");
+        scoreContainer.classList.add("hide");
+    })
+}
 
 function aiPlay(){//aiのプレイ関数
     let j = Math.floor(Math.random()*8)+1;
@@ -288,3 +302,18 @@ function checkEmptySpace(){//コンピューター対戦で空いてるところ
         return true;
     }
 }
+function showMainScreenBtn(){
+    setTimeout(function(){
+        document.getElementById("mainScreen").style.display="flex";
+    },400);
+    mainScreenBtn.addEventListener("click",function(){
+        setTimeout(function(){
+            document.getElementById("mainScreen").style.display="none";
+            document.getElementById("2-players").style.display="flex";
+            document.getElementById("vsAI").style.display="flex";
+            hideBoard();
+        },400);
+    });
+}
+
+    

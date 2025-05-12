@@ -14,7 +14,9 @@ h1{
     padding: 10px 15px;  /*ボタンサイズ*/
     margin: 0 10px;        /*ボタンの間の距離*/
 }
-
+#mainScreen{
+    transform: translateX(384px);
+}
 /*ゲームの盤面*/
 
 #container{
@@ -75,7 +77,9 @@ h1{
 .show{
     display: block;
 }
-
+#mainScreen{
+    display: none;
+}
 
 /*スコアボード*/
 

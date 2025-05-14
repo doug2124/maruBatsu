@@ -1,10 +1,15 @@
 body{
+    background-image: url('/Users/douglastakayukiyonetsuka/Imagens/Screenshots/iTWEB/スクリーンショット\ 2025-05-14\ 16.08.19.png');
+    background-color: rgba(255, 255, 255, 0.6);
+    background-blend-mode: overlay;
+    background-repeat: repeat;
     text-align: center;  /*HTMLは画面のどの向きにします*/
     font-family: Helvetica,sans-serif;  /*どんなフォントを使うを述べっています*/
 }
 
 h1{
     font-size: 40px; /*マルバツゲームのタイトルの文字サイズ*/
+    color: black;
 }
 
 /*ボタン*/
@@ -33,7 +38,7 @@ h1{
 
 .box{
     height:100px;  /*盤面の高さ*/
-    border: 5px solid #000;/*盤面の枠サイズと色*/
+    border: 5px solid black;/*盤面の枠サイズと色*/
     box-sizing: border-box;/*盤面の幅は高さと同じになる(枠が含めている)*/
     flex: 1 1 33%;/*まるとばつの入る場所はサイズ的にお互いに同じです*/
 }
@@ -57,7 +62,7 @@ h1{
 /*丸とばつの形*/
 .x{
     font-size: 100px;
-    color: navy;
+    color: blue;
     display: inline-block;
     line-height: 100px;
 }
@@ -87,6 +92,7 @@ h1{
     font-weight: bold;
     margin-top: 30px;
     font-size: 25px;
+    color: black;
 }
 
 h2{
@@ -94,12 +100,12 @@ h2{
 }
 
 #x-scoreboard{
-    color: navy;
+    color: blue;
     margin-right: 3px;
     display: inline-block;
 }
 .score-box{
-    margin: 20px;
+    margin: 35px;
 }
 
 #o-scoreboard{
@@ -119,7 +125,7 @@ h2{
     top: 150px;/*メセージボックスの高さ*/
     width: 500px;/*メセージボックスの幅*/
     font-size: 50px;
-    background-color:#000;/*メセージボックスの色*/
-    color: #fff;/*文字のカラー*/
+    background-color:black;/*メセージボックスの色*/
+    color: white;/*文字のカラー*/
     padding: 20px;/*文字をわく距離を取る*/
 }

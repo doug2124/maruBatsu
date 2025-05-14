@@ -11,7 +11,8 @@ let player2 = 0;
 
 //ゲームモード
 //2プレイヤー対戦
-let button1=button[0].addEventListener("click",function(){
+let button1 = document.getElementById("2-players")
+button1=button[0].addEventListener("click",function(){
     hideButton();
     showBoard();
     showMainScreenBtn();
@@ -20,9 +21,7 @@ let button1=button[0].addEventListener("click",function(){
     }
 });
 function VSClick(){
-        
         let el= checkPlayer(player1,player2);
-        console.log(mainScreenBtn.style.display);
         if(this.childNodes.length==0){
             let cloneEl = el.cloneNode(true);
             this.appendChild(cloneEl);
@@ -41,33 +40,38 @@ function VSClick(){
                 player1=0;
                 player2=0;
             }
-        }
+}
 //vsAI
-let button2=button[1].addEventListener("click",function(){
+let button2 = document.getElementById("vsAI")
+button2=button[1].addEventListener("click",function(){
     hideButton();
     showBoard();
     showMainScreenBtn();
-    for(let i=0;i<boxes.length;i++){ 
-
-        boxes[i].addEventListener("click",function(){
+    for(let i =0;i<boxes.length;i++){
+        boxes[i].addEventListener("click",VSClickAI);
+    }
+});
+function VSClickAI(){
         let el= x;
             
-        if(this.childNodes.length==0){//まるか抜毛履いている確認関数
+    if(this.childNodes.length==0){//まるか抜毛履いている確認関数
             let cloneEl = el.cloneNode(true);
             this.appendChild(cloneEl);
+            let winCounter=0;
             checkWin();
             if(player1==4){
                 checkDraw();
             }
-                if(checkEmptySpace()==undefined){//引き分けの場合はAIがプレイしないように
+                if(checkEmptySpace()==undefined && winCounter!=1){//引き分けの場合はAIがプレイしないように
                 aiPlay();
+                console.log(winCounter);
+                console.log(player1);
         }
             //プレイヤーカウンター
             player1++;
-        }
-        });
-}  
-});
+    }
+}
+
 
 function checkPlayer(player1,player2){//２プレイヤー対戦のみ
     if(player1==player2){
@@ -195,6 +199,7 @@ function xWin(){
     xScore.textContent= parseInt(xScore.textContent)+1;
     player1=0;
     player2=0;
+    winCounter=1;
 }
 //まるの勝ちだ
 function oWin(){
@@ -308,6 +313,15 @@ function showMainScreenBtn(){
     },400);
     mainScreenBtn.addEventListener("click",function(){
         setTimeout(function(){
+            clearBoard();
+            let xScore =document.querySelector("#scorecounter-1");
+            xScore.textContent= 0;
+            let oScore =document.querySelector("#scorecounter-2");
+            oScore.textContent= 0;
+            for(let i = 0;i<boxes.length;i++){
+                boxes[i].removeEventListener("click",VSClick); 
+                boxes[i].removeEventListener("click",VSClickAI); 
+            }
             document.getElementById("mainScreen").style.display="none";
             document.getElementById("2-players").style.display="flex";
             document.getElementById("vsAI").style.display="flex";

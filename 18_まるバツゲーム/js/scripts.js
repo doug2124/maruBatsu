@@ -323,8 +323,8 @@ function showMainScreenBtn(){
                 boxes[i].removeEventListener("click",VSClickAI); 
             }
             document.getElementById("mainScreen").style.display="none";
-            document.getElementById("2-players").style.display="flex";
-            document.getElementById("vsAI").style.display="flex";
+            document.getElementById("2-players").style.display="grid";
+            document.getElementById("vsAI").style.display="grid";
             hideBoard();
         },400);
     });

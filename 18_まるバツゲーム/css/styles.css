@@ -13,14 +13,25 @@ h1{
 }
 
 /*ボタン*/
+#buttons-container{
+        position: fixed;
+        bottom: 650px;
+        right: 600px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+}
 
 #buttons-container button{
     border: none;        /*ボタンの枠、この場合は枠なし*/
     padding: 10px 15px;  /*ボタンサイズ*/
-    margin: 0 10px;        /*ボタンの間の距離*/
+    margin: 0 ;        /*ボタンの間の距離*/
 }
+
 #mainScreen{
-    transform: translateX(384px);
+    position: fixed;
+    bottom: 240px;
+    transform: translateX(-172%);
 }
 /*ゲームの盤面*/
 
@@ -70,7 +81,7 @@ h1{
 .o{
     width: 50px;
     height: 50px;
-    border: 5px solid green;
+    border: 8px solid green;
     border-radius: 50%;/*まるの形になる比*/
     display: inline-block;
     margin-top: 17px;
@@ -112,7 +123,7 @@ h2{
     display: inline-block;
     width: 18px;
     height: 18px;
-    border: 2px solid green;
+    border: 4px solid green;
     border-radius: 50%;
 }
 

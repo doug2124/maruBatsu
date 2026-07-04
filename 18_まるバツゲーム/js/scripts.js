@@ -57,15 +57,13 @@ function VSClickAI(){
     if(this.childNodes.length==0){//まるか抜毛履いている確認関数
             let cloneEl = el.cloneNode(true);
             this.appendChild(cloneEl);
-            let winCounter=0;
             checkWin();
             if(player1==4){
                 checkDraw();
             }
-                if(checkEmptySpace()==undefined && winCounter!=1){//引き分けの場合はAIがプレイしないように
+                if(checkEmptySpace()==undefined){//引き分けの場合はAIがプレイしないように
                 aiPlay();
-                console.log(winCounter);
-                console.log(player1);
+                
         }
             //プレイヤーカウンター
             player1++;
@@ -199,7 +197,6 @@ function xWin(){
     xScore.textContent= parseInt(xScore.textContent)+1;
     player1=0;
     player2=0;
-    winCounter=1;
 }
 //まるの勝ちだ
 function oWin(){
